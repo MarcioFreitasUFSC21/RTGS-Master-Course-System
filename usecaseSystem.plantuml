@@ -1,6 +1,6 @@
 @startuml
 left to right direction
-actor "User" as user
+actor "RTGS_Transaction" as RTGS_Transaction
 rectangle RTGS {
 usecase " Start RTGS" as UC1
 usecase " Choose the geometric figure" as UC2
@@ -15,9 +15,13 @@ usecase " Show the trajectory strategy menu" as UC10
 usecase " Inicialize the Robot System" as UC11
 usecase " Management the robotic arm" as UC12
 }
-user --> UC1
-user --> UC2
-user --> UC3
-user --> UC4
+RTGS_Transaction --> UC5
+RTGS_Transaction --> UC6
+RTGS_Transaction --> UC7
+RTGS_Transaction --> UC8
+RTGS_Transaction --> UC9
+RTGS_Transaction --> UC10
+RTGS_Transaction --> UC11
+RTGS_Transaction --> UC12
 (UC4) .> (UC5): extends 
 @enduml

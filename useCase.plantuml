@@ -1,4 +1,6 @@
 @startuml
+
+actor "User" as user
 rectangle RTGS {
 usecase " Start RTGS" as UC1
 usecase " Choose the geometric figure" as UC2
@@ -13,4 +15,9 @@ usecase " Show the trajectory strategy menu" as UC10
 usecase " Inicialize the Robot System" as UC11
 usecase " Management the robotic arm" as UC12
 }
+user --> UC1
+user --> UC2
+user --> UC3
+user --> UC4
+(UC4) .> (UC5): extends 
 @enduml

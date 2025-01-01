@@ -1,0 +1,14 @@
+@startuml
+abstract class "Transaction"
+RTGS *---EmergencyStop
+RTGS *---Screen
+RTGS *---Keypad
+RTGS *---Controller
+RTGS *--- RobotModel
+RTGS *--- TrajecoryGenerator
+RTGS ---> "Transaction" : excute
+"Transaction" <|-- TrajectoryProfile
+"Transaction" <|-- ModbusNetInterface
+"Transaction" ---> RobotModel : acess/modify the robot params
+TrajectoryProfile ---> Screen : draw the figure
+@enduml

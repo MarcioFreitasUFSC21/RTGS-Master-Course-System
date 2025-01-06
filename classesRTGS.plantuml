@@ -10,5 +10,5 @@ RTGS ---> "Transaction" : excute
 "Transaction" <|-- TrajectoryProfile
 "Transaction" <|-- ModbusNetInterface
 "Transaction" ---> RobotModel : acess/modify the robot params
-TrajectoryProfile ---> Screen : draw the figure
+"Transaction" ---> Screen : draw the figure
 @enduml

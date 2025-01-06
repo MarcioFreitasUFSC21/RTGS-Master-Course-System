@@ -1,0 +1,89 @@
+@startuml
+Class Screen{
+    + Screen(): construtor
+    + displayMessage():
+    + drawTrajectoryProfile()
+   
+}
+Class RTGS{
+    - onOffRCS: false
+    - startRCS: false
+    + RTGS(): construtor
+    + inicializeModbusNet()
+    + readProfileOption()
+    + sendProfileOption()
+}
+Class RTGSMain(){
+    + RTGSMain(): construtor
+    + activateRTGS()
+}
+Class ModbusNetInterface{
+    - slaveNumber
+    - deviceAddres
+    - functionCode
+    - operationData: 
+    - errorCheck: 0x00
+    - isProblem: false
+    + execute()
+    + char: requestMasterToSlave()
+    + char: receiveSlaveToMaster()
+}
+Class Controller{
+    - controllerType
+    - proportionalConst
+    - settlingTime
+    - overshootPercent
+    - damperFactor
+    - naturalFreq
+    - risingtTime
+    - isRobotOk
+    + Controller(): construtor
+    + processingControl ()
+    + requestModbusNetData()
+    + sendModbusNetData()
+    + readControlParameters()
+    + processingRobotDataToControl()
+    + sendRobotDataToDisplay()
+}
+abstract class Transaction{
+    + execute()
+    + showMessage()
+}
+class TrajectoryProfile{
+    + execute()
+}
+class TrajectoryGenerator{
+    -  profileType
+    -  pointControlNumber
+    -  curvature
+    + TrajectoryGenerator():construtor
+    + saveProfileOption()
+    + processingProfileOption()
+    + chargeTrajectoryParameters()
+    + buildTrajectoryProfile()
+    + sendPathToDisplay()
+}
+class EmargencyStop{
+    - keyState: false
+    + EmargencyStop(): construtor
+    + turnOffRobot(); 
+    + displayMessage();
+}
+class RobotModel{
+    - dOFNumber
+    - Ai
+    - Thetai
+    - Alphai
+    + RobotModel(): construtor
+    + solveDKinematic()
+    + solveIKinematic()
+    + buildModbusControlPath()
+    + requestMasterToSlave()
+    + receiveSlaveToMaster()
+}
+class Keypad{
+    - option:  0
+    + Keypad(): construtor
+    + getInput()
+}
+@enduml

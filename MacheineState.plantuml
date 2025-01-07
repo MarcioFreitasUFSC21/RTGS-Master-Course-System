@@ -1,0 +1,12 @@
+@startuml
+
+[*] --> State1
+State1: RTGS on
+State1: EmergencyStop = False
+State1 --> State2: anormal condition
+State2: RTGS off
+State2: EmergencyStop = True
+State2 --> State1: normal flow
+State2 -->[*]
+
+@enduml

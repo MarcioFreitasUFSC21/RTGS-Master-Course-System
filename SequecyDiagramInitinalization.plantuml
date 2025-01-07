@@ -1,0 +1,11 @@
+@startuml
+== Initialization ==
+actor User as Foo1
+Foo1 -> Keypad: press button
+boundary RTGSMain as Foo2
+Keypad -> Foo2: startRTGS
+control RTGS as Foo3
+Foo2 -> Foo3: activateRTGS()
+Foo3 -> Screen: showMessage()
+Screen --> Foo1: initialization and welcome messages
+@enduml

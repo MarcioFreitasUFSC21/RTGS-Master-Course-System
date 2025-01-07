@@ -1,0 +1,12 @@
+@startuml
+(*) --> "Initialization"
+if "Start button is active?" then
+-->[Yes] "Start RTGS"
+--> "Activate System"
+--> "Show the initialization message"
+--> "Show the Welcome message"
+-down-> (*)
+else
+-->[No] " Ending process"
+--> (*)
+@enduml

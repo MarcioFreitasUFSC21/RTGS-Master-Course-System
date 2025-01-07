@@ -1,0 +1,9 @@
+@startuml
+control RTGS as Foo3
+Foo3 -> TrajectoryGenerator: sendFigureOption()
+TrajectoryGenerator -> TrajectoryProfile:execute(points)
+ loop for each trajetory construction method, draw the figure on the screen
+       TrajectoryProfile -->Screen: drawFigure()
+    end
+Screen --> Foo3: drawn figures
+@enduml

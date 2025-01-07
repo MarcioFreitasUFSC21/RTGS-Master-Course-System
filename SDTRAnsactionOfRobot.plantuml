@@ -1,0 +1,14 @@
+@startuml
+control RTGS as Foo3
+Foo3 -> TrajectoryGenerator: sendFigureOption()
+TrajectoryGenerator -> RobotModel:execute(points)
+ loop while the built figure has concluded by robot model
+       RobotModel ->Controller:sendIKparameters()
+       Controller -> ModbusNetInterface:requestMasterToSlave()
+       ModbusNetInterface -->Controller:receiveSlaveToMaster()
+       Controller --> RobotModel: sendAngularPosition()
+       RobotModel ->Controller:sendDKParams()
+       Controller ->ModbusNetInterface: requestMasterToSlave()
+    end
+RobotModel -->Foo3: figure drawn by robot
+@enduml

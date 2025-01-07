@@ -1,0 +1,12 @@
+@startuml
+(*) --> "Initialization"
+if "Start button is active?" then
+-->[Yes] "Start RTGS"
+--> "Show the Start and Welcome messages"
+--> "Show the Geometric Figure Menu"
+--> " Other Main Actions"
+->(*)
+else
+-->[No] " Ending process"
+--> (*)
+@enduml

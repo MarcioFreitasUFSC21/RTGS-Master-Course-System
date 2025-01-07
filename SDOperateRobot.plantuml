@@ -1,0 +1,13 @@
+@startuml
+control RTGS as Foo3
+Foo3 -> Screen: showMessage()
+Screen --> Foo3: show the option choosen
+Foo3 -> TrajectoryGenerator: sendFigureOption()
+group sd Operate the Robot [Transaction]
+    TrajectoryGenerator -> RobotModel:execute()
+    RobotModel -> Controller: processing data
+    Controller -> ModbusNetInterface: RequestMasterToSlave()
+    ModbusNetInterface-->Controller: ReceiveSlaveToMaster()
+end
+Screen --> Foo3: drawn figures
+@enduml

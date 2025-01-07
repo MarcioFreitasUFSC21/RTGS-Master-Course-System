@@ -10,8 +10,9 @@ Class RTGS{
     - startRCS: false
     + RTGS(): construtor
     + inicializeModbusNet()
-    + readProfileOption()
-    + sendProfileOption()
+    + readFigureOption()
+    + sendFigureOption()
+    + displayMessage()
 }
 Class RTGSMain(){
     + RTGSMain(): construtor

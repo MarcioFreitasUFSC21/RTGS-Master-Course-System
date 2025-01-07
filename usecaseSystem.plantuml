@@ -4,14 +4,12 @@ actor "RTGS_Transaction" as RTGS_Transaction
 rectangle RTGS {
 usecase " Start RTGS" as UC1
 usecase " Choose the geometric figure" as UC2
-usecase " Choose the trajectory strategy" as UC3
 usecase " Emergency Stop Handling" as UC4
 usecase " Exception Handling" as UC5
 usecase " Processing option" as UC6
 usecase " Build  Geometric Figure" as UC7
 usecase " Show the welcome message!" as UC8
 usecase " Show the geometric figure menu" as UC9
-usecase " Show the trajectory strategy menu" as UC10
 usecase " Inicialize the Robot System" as UC11
 usecase " Management the robotic arm" as UC12
 }
@@ -20,7 +18,6 @@ RTGS_Transaction --> UC6
 RTGS_Transaction --> UC7
 RTGS_Transaction --> UC8
 RTGS_Transaction --> UC9
-RTGS_Transaction --> UC10
 RTGS_Transaction --> UC11
 RTGS_Transaction --> UC12
 (UC4) .> (UC5): extends 

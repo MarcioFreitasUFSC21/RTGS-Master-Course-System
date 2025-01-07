@@ -11,4 +11,5 @@ RTGS ---> "Transaction" : excute
 "Transaction" <|-- ModbusNetInterface
 "Transaction" ---> RobotModel : acess/modify the robot params
 "Transaction" ---> Screen : draw the figure
+Controller --> RTGS: turn-off System
 @enduml

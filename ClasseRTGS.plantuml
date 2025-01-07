@@ -1,22 +1,23 @@
 @startuml
 Class Screen{
     + Screen(): construtor
-    + displayMessage():
-    + drawTrajectoryProfile()
+    + showMessage():
    
 }
 Class RTGS{
     - onOffRCS: false
     - startRCS: false
     + RTGS(): construtor
-    + inicializeModbusNet()
     + readFigureOption()
     + sendFigureOption()
-    + displayMessage()
+    + showMessage()
+    
 }
 Class RTGSMain(){
     + RTGSMain(): construtor
     + activateRTGS()
+    + inicializeSystem()
+    + showMessage()
 }
 Class ModbusNetInterface{
     - slaveNumber
@@ -40,18 +41,21 @@ Class Controller{
     - isRobotOk
     + Controller(): construtor
     + processingControl ()
-    + requestModbusNetData()
+    + execute(controlparameters)
+    + sendAngularPosition()
     + sendModbusNetData()
     + readControlParameters()
     + processingRobotDataToControl()
-    + sendRobotDataToDisplay()
+    + turnOffSystem();
+    + showMessage()
 }
 abstract class Transaction{
     + execute()
-    + showMessage()
 }
 class TrajectoryProfile{
     + execute()
+    + drawFigure()
+    + showMessage()
 }
 class TrajectoryGenerator{
     -  profileType
@@ -62,13 +66,14 @@ class TrajectoryGenerator{
     + processingProfileOption()
     + chargeTrajectoryParameters()
     + buildTrajectoryProfile()
-    + sendPathToDisplay()
+    + execute(pontos)
+    + showMessage()
 }
 class EmargencyStop{
     - keyState: false
     + EmargencyStop(): construtor
-    + turnOffRobot(); 
-    + displayMessage();
+    + sendEmergencyStop()
+     
 }
 class RobotModel{
     - dOFNumber
@@ -78,7 +83,9 @@ class RobotModel{
     + RobotModel(): construtor
     + solveDKinematic()
     + solveIKinematic()
+    + sendIKparametrs()
     + buildModbusControlPath()
+    + sendDKParameters()
     + requestMasterToSlave()
     + receiveSlaveToMaster()
 }
@@ -86,5 +93,6 @@ class Keypad{
     - option:  0
     + Keypad(): construtor
     + getInput()
+    + sendInput()
 }
 @enduml

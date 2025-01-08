@@ -2,11 +2,25 @@
 (*) --> "Initialization"
 if "Start button is active?" then
 -->[Yes] "Start RTGS"
---> "Activate System"
---> "Show the initialization message"
---> "Show the Welcome message"
--down-> (*)
+--> "Show the initial messages"
+--> "show the goemetric figure menu"
+--> " input the selection menu"
+    if "" then
+    -right-> "user cancelled the operation"
+    --> (*)
+    else
+    --left-> "user has choosen a figure"
+    --down-> "configure the figure features"
+    --down-> "show the choosen figure features"
+    --down-> "interacts of trajectory generator"
+        if "Have problem?" then
+        -right->[yes] "Show the Error Message"
+        else
+        -->[No] " Generator points"
+    endif
 else
--->[No] " Ending process"
+-->[No] "Turn-off RTGS!"
+-->"Ending process"
 --> (*)
+endif
 @enduml

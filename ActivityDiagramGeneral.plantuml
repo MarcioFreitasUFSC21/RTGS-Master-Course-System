@@ -1,0 +1,30 @@
+@startuml
+
+(*)--> "Initialization"
+if "Start button is active?" then
+-->[true] "Show the initial messages"
+-down->  "show the goemetric figure menu"
+-down-> "input the selection menu"
+if "" then 
+    -> "user cancelled the operation" as a3
+    -down-> " ending process" as fn
+else 
+    -left->"User choosen an option"
+    -down-> "configure the figure feature"
+    -down-> "show the choosen figure features"
+    -down-> "interacts of trajectory generator"
+    -down-> "generation the points"
+        if "have the problem?" then
+            ->[yes] "show error message"
+            -down-> " ending process" as fn
+        else
+            -left->"show  the thank message"
+            -down-> " ending process" as fn
+        endif
+  endif
+else
+ ->[false] "turn-off system" as a2
+ -down-> " ending process" as fn
+ fn -->(*)
+endif
+@enduml

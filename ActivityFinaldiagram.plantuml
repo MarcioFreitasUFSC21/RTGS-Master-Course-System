@@ -1,0 +1,15 @@
+@startuml
+start
+repeat
+    :Test something;
+        if (something went wrong?) then (no)
+            #PaleTurquoise:ok;
+            break
+        endif
+        ->Nok;
+        :Alert "Error with long text";
+repeat while (something went wrong with long text?) is (yes) not (no)
+->//merged step//;
+:Alert "success";
+stop
+@enduml

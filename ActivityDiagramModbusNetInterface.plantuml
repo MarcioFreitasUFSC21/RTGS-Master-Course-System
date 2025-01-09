@@ -1,0 +1,32 @@
+@startuml
+start
+repeat
+    :receive control with IK parameters;
+    :read  control with IK parameters;
+    :receive control with DK parameters;
+    :read  control with DK parameters;
+if (Any problems?) then (yes)
+    :show error message;
+else (no)
+    :package master request with control, IK and DK parameters in Modbus frame;
+    :read master request;
+    :send the master request to Dory controller;
+repeat :listen to slave response;
+    if( Did Modbus frame with slave response arrive?) then (yes)
+        :receiveModbus frame with slave response;
+        :unpack Modbus frame with slave response;
+        :read slave response;
+        if (Is there any trouble?) then (yes)
+            : show error message;
+        else(no)
+            :send the read slave response to Controller module;
+        endif
+    else (no)
+    endif
+repeat while ( Did Modbus frame with slave response receive?) is (yes)
+    ->(no);    
+endif
+repeat while (while the system is active) is (yes)
+->(no);
+stop
+@enduml

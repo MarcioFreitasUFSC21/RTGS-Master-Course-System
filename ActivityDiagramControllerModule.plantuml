@@ -1,0 +1,35 @@
+@startuml
+start
+repeat
+    :read the generated point data;
+    :read IK parameters;
+    :read slave response data;
+    :read the DK parameters;
+if (Any problems?) then (yes)
+    :show error message;
+else (no)
+    :solve control with IK parameters;
+    :read control with IK parameters;
+    :send the control with IK parameters to ModbusNetInterface module;
+    :solve control with DK parameters;
+    :send the control with DK parameters to ModbusNetInterface module;
+repeat :listen to slave response;
+    if(Did slave response arrive?) then (yes)
+        :receive slave response;
+        :read slave response;
+        : unpack angle parameters from slave response;
+        :send angle parameters to Robot module;
+        if (Is there any trouble?) then (yes)
+            : show error message;
+        else(no)
+            :send angle parameters to Robot module;
+        endif
+    else (no)
+    endif
+repeat while (Did slave response receive?) is (yes)
+    ->(no);    
+endif
+repeat while (while the system is active) is (yes)
+->(no);
+stop
+@enduml

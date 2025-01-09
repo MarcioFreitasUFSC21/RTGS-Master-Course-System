@@ -1,0 +1,9 @@
+@startuml
+start 
+repeat
+    :read data;
+    :generate diagrams;
+repeat while (mode data?) is (yes)
+-> (no);
+stop
+@enduml

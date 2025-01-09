@@ -1,0 +1,28 @@
+@startuml
+start
+repeat
+    :receive the figure feature data;
+    :read the generated point data;
+    :solve the IK parameters;
+if (have problems?) then (yes)
+    :show error message;
+else (no)
+    :send the solved IK parameters to Controller module;
+repeat :listen to slave response;
+    if( Did angle parameters is arrive?) then (yes)
+        :receive angle parameters;
+        :solve DK parameters;
+        if (Is there any trouble?) then (yes)
+            : show error message;
+        else(no)
+            :send the solved DK parameters to Controller module;
+        endif
+    else (no)
+    endif
+repeat while (Did angle parameters received?) is (yes)
+    ->(no);    
+endif
+repeat while (while the system is active) is (yes)
+->(no);
+stop
+@enduml

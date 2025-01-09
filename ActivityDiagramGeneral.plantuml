@@ -1,15 +1,16 @@
 @startuml
 start
+repeat
 if (start button is active) then (yes)
     :show the initial messages;
-    :show the goemetric figure menu;
+    :show the geometric figure menu;
     :input the selection menu;
     if () then (user cancelled the operation)
         :ending process;
     else (user choosen an option)
         :configure the figure feature;
         :show the choosen figure features;
-        :interacts of trajectory generator;
+        :interact of trajectory generator;
         :generation the points;
         if (have the problem?) then (yes)
             :show error message;
@@ -22,5 +23,7 @@ else (no)
     :turn-off system;
     :ending process;
 endif
+repeat while(Is there some user interacting with system?) is (yes)
+->(no);
 stop
 @enduml

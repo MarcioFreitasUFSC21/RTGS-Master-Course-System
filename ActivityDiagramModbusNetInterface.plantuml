@@ -5,7 +5,7 @@ repeat
     :read  control with IK parameters;
     :receive control with DK parameters;
     :read  control with DK parameters;
-if (Any problems?) then (yes)
+if (Is there any problems?) then (yes)
     :show error message;
 else (no)
     :package master request with control, IK and DK parameters in Modbus frame;
@@ -26,7 +26,7 @@ repeat :listen to slave response;
 repeat while ( Did Modbus frame with slave response receive?) is (yes)
     ->(no);    
 endif
-repeat while (while the system is active) is (yes)
+repeat while(Is there any user interacting with system?) is (yes)
 ->(no);
 stop
 @enduml

@@ -1,13 +1,16 @@
 @startuml
 start
-    : receive the figure feature data;
+repeat
+    :receive the figure feature data;
     :call the math function to different construction methods;
-    :generate the points to figure choosen;
-if (have problems?) then (yes)
+    :generate the points to choosen figure;
+if (Is there any problems?) then (yes)
     :show error message;
 else (no)
     :send the generated points to robot module;
     :interact the trajectory profile module\n to draw the choosen figure on the screen;
 endif
+repeat while(Is there any user interacting with system?) is (yes)
+->(no);
 stop
 @enduml

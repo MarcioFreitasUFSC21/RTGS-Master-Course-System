@@ -5,7 +5,7 @@ repeat
     :read IK parameters;
     :read slave response data;
     :read the DK parameters;
-if (Any problems?) then (yes)
+if (Is there any problems?) then (yes)
     :show error message;
 else (no)
     :solve control with IK parameters;
@@ -29,7 +29,7 @@ repeat :listen to slave response;
 repeat while (Did slave response receive?) is (yes)
     ->(no);    
 endif
-repeat while (while the system is active) is (yes)
+repeat while (Is there any user interacting with system?) is (yes)
 ->(no);
 stop
 @enduml

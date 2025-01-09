@@ -4,7 +4,7 @@ repeat
     :receive the figure feature data;
     :read the generated point data;
     :solve the IK parameters;
-if (have problems?) then (yes)
+if ( Is there any problems?) then (yes)
     :show error message;
 else (no)
     :send the solved IK parameters to Controller module;
@@ -22,7 +22,7 @@ repeat :listen to slave response;
 repeat while (Did angle parameters received?) is (yes)
     ->(no);    
 endif
-repeat while (while the system is active) is (yes)
+repeat while (Is there any user interacting with system?) is (yes)
 ->(no);
 stop
 @enduml

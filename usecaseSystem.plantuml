@@ -20,5 +20,5 @@ RTGS_Transaction --> UC8
 RTGS_Transaction --> UC9
 RTGS_Transaction --> UC11
 RTGS_Transaction --> UC12
-(UC4) .> (UC5): extends 
+(UC2) .> (UC14): extends 
 @enduml

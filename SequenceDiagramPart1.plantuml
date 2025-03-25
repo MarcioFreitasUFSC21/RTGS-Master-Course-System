@@ -2,11 +2,11 @@
 @startuml
 control RTGS as Foo3
 Foo3 -> Screen: showMessage()
-Screen --> Foo3: show the option choosen
-Foo3 -> TrajectoryGenerator: sendFigureOption()
-group sd Build the figures [Transactions]
-    TrajectoryGenerator -> TrajectoryProfile:execute()
-    TrajectoryProfile -->Screen: draw figures
+Screen --> Foo3: show the option 
+Foo3 -> Transactions: sendFigureOption()
+group sd Build the figure [Transactions]
+    Transactions -> MakeTrajectoryProfile:execute()
+    MakeTrajectoryProfile -->Screen: draw figures
 end
 Screen --> Foo3: drawn figures
 @enduml

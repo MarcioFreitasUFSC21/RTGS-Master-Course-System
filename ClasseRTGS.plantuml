@@ -19,17 +19,7 @@ Class RTGSMain(){
     + inicializeSystem()
     + showMessage()
 }
-Class ModbusNetInterface{
-    - slaveNumber
-    - deviceAddres
-    - functionCode
-    - operationData: 
-    - errorCheck: 0x00
-    - isProblem: false
-    + execute()
-    + char: requestMasterToSlave()
-    + char: receiveSlaveToMaster()
-}
+
 Class Controller{
     - controllerType
     - proportionalConst
@@ -52,22 +42,21 @@ Class Controller{
 abstract class Transaction{
     + execute()
 }
-class TrajectoryProfile{
-    + execute()
+class MakeTrajectoryProfile{
+    + execute(pontos)
     + drawFigure()
     + showMessage()
 }
-class TrajectoryGenerator{
-    -  profileType
-    -  pointControlNumber
-    -  curvature
-    + TrajectoryGenerator():construtor
-    + saveProfileOption()
-    + processingProfileOption()
-    + chargeTrajectoryParameters()
-    + buildTrajectoryProfile()
-    + execute(pontos)
-    + showMessage()
+Class MakeModbusNetInterface{
+    - slaveNumber
+    - deviceAddres
+    - functionCode
+    - operationData: 
+    - errorCheck: 0x00
+    - isProblem: false
+    + execute()
+    + char: requestMasterToSlave()
+    + char: receiveSlaveToMaster()
 }
 class EmargencyStop{
     - keyState: false
@@ -89,9 +78,9 @@ class RobotModel{
     + requestMasterToSlave()
     + receiveSlaveToMaster()
 }
-class Keypad{
+class Mouse{
     - option:  0
-    + Keypad(): construtor
+    + Mouse(): construtor
     + getInput()
     + sendInput()
 }

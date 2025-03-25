@@ -1,27 +1,25 @@
 @startuml
 actor User as Foo1
-Foo1 -> Keypad: press button
+Foo1 -> Mouse: press button
 boundary RTGSMain as Foo2
-Keypad -> Foo2: sendImput()
+Mouse -> Foo2: sendImput()
 control RTGS as Foo3
 Foo2 -> Foo3: Processing option
 Foo3 -> Screen: showMessage()
-Screen --> Foo1: show the option choosen
-Foo3 -> TrajectoryGenerator: sendFigureOption()
+Foo3 -> Transaction: sendFigureOption()
+Transaction -> MakeTrajectoryProfile: execute()
  loop each trajetory strategy: draw and enable the robot 
-    TrajectoryGenerator ->TrajectoryProfile:execute(points)
-    TrajectoryGenerator ->RobotModel: execute(points)
+    MakeTrajectoryProfile ->RobotModel: execute(points)
     loop while the built figure by robot model
        RobotModel ->Controller:sendIKparameters()
-       Controller -> ModbusNetInterface:execute(controlParams)
-       ModbusNetInterface -->Controller:receiveSlaveToMaster()
+       Controller -> MakeModbusNetInterface:execute(controlParams)
+       MakeModbusNetInterface -->Controller:receiveSlaveToMaster()
        Controller --> RobotModel: sendAngularPosition()
        RobotModel ->Controller:sendDKParams()
-       Controller ->ModbusNetInterface: execute(controlPoints)
+       Controller ->MakeModbusNetInterface: execute(controlPoints)
     end
-    
-    TrajectoryProfile -> Screen: drawFigure()
+
 end
-RobotModel -->Foo3: figure drawn by robot
+RobotModel -->Screen: figure drawn by robot
 Screen --> Foo1: drawn figures
 @enduml

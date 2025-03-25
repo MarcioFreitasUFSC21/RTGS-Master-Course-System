@@ -3,22 +3,21 @@ left to right direction
 actor "RTGS_Transaction" as RTGS_Transaction
 rectangle RTGS {
 usecase " Start RTGS" as UC1
-usecase " Choose the geometric figure" as UC2
-usecase " Emergency Stop Handling" as UC4
-usecase " Exception Handling" as UC5
-usecase " Processing option" as UC6
-usecase " Build  Geometric Figure" as UC7
-usecase " Show the welcome message!" as UC8
-usecase " Show the geometric figure menu" as UC9
-usecase " Inicialize the Robot System" as UC11
-usecase " Management the robotic arm" as UC12
+usecase " Emergency Stop Handling" as UC3
+usecase " Exception Handling" as UC4
+usecase " Processing option" as UC5
+usecase " Build  Geometric Figure" as UC6
+usecase " Show the welcome message!" as UC7
+usecase " Show the geometric figure to built message" as UC8
+usecase " Inicialize the Robot System" as UC9
+usecase " Management the robotic arm" as UC10
 }
+RTGS_Transaction --> UC4
 RTGS_Transaction --> UC5
 RTGS_Transaction --> UC6
 RTGS_Transaction --> UC7
 RTGS_Transaction --> UC8
 RTGS_Transaction --> UC9
-RTGS_Transaction --> UC11
-RTGS_Transaction --> UC12
-(UC2) .> (UC14): extends 
+RTGS_Transaction --> UC10
+(UC3) .> (UC4): extends 
 @enduml

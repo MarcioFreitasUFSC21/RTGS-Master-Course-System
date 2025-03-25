@@ -2,14 +2,13 @@
 abstract class "Transaction"
 RTGS *---EmergencyStop
 RTGS *---Screen
-RTGS *---Keypad
+RTGS *---Mouse
 RTGS *---Controller
 RTGS *--- RobotModel
-RTGS *--- TrajecoryGenerator
 RTGS ---> "Transaction" : excute
-"Transaction" <|-- TrajectoryProfile
-"Transaction" <|-- ModbusNetInterface
+"Transaction" <|-- MakeTrajectoryProfile
+"Transaction" <|-- MakeModbusNetInterface
 "Transaction" ---> RobotModel : acess/modify the robot params
 "Transaction" ---> Screen : draw the figure
-Controller --> RTGS: turn-off System
+
 @enduml

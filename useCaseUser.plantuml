@@ -3,7 +3,6 @@ left to right direction
 actor "User" as user
 rectangle RTGS {
 usecase " Start RTGS" as UC1
-usecase " Choose the geometric estrategy method to draw the figure" as UC2
 usecase " Emergency Stop Handling" as UC3
 usecase " Exception Handling" as UC4
 usecase " Processing option" as UC5
@@ -14,7 +13,6 @@ usecase " Inicialize the Robot System" as UC10
 usecase " Management the robotic arm" as UC11
 }
 user --> UC1
-user --> UC2
 user --> UC3
 (UC3) .> (UC4): extends 
 @enduml

@@ -7,5 +7,6 @@ loop while the Emergency condition is active
     EmergencyStop ->Controller: sendEmergencyStop()
     Controller ->Foo3: turn-Off()
     Controller -> Screen: showMessage()
+    Screen -->Foo1:show Alert message
 end 
 @enduml
